@@ -1,0 +1,9 @@
+apiVersion: azure.upbound.io/v1beta1
+metadata:
+  name: default
+kind: ProviderConfig
+spec:
+  credentials:
+    source: SystemAssignedManagedIdentity
+  subscriptionID: 3e4d97c2-8bd1-4b12-99ed-303d1b77c4cc
+  tenantID: 922474ff-3ade-465e-9be4-04730b10a029
