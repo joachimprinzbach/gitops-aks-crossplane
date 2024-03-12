@@ -15,5 +15,5 @@ kubectl apply -k external-dns
 kubectl apply -k argocd
 ```
 
-## Add Public IP of Ingress Controler to cloudflare
+## Add Public IP of Ingress Controller to cloudflare
 Set public ip address in cloudflare to ingress controller load balancer ip.
