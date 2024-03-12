@@ -9,6 +9,12 @@ data:
   url: https://argocd.campbaloise.ch
   # https://docs.crossplane.io/knowledge-base/integrations/argo-cd-crossplane/#set-resource-tracking-method
   application.resourceTrackingMethod: annotation
+  # https://docs.crossplane.io/knowledge-base/integrations/argo-cd-crossplane/#set-resource-exclusion
+  resource.exclusions: |
+    - apiGroups:
+      - "*"
+      kinds:
+      - ProviderConfigUsage
   dex.config: |
     connectors:
       - type: github
