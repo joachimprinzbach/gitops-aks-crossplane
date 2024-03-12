@@ -3,4 +3,4 @@ kind: Provider
 metadata:
   name: provider-helm
 spec:
-  package: crossplanecontrib/provider-kubernetes:v0.16.0
+  package: xpkg.upbound.io/crossplane-contrib/provider-helm:v0.17.0
