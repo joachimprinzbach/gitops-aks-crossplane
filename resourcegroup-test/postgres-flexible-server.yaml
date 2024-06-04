@@ -6,6 +6,8 @@ metadata:
     testing.upbound.io/example-name: example
 spec:
   forProvider:
+    administrator_login_password: 4-v3ry-53cr37-p455w0rd
+    administratorLogin: 4dm1n157r470r
     authentication:
       - activeDirectoryAuthEnabled: true
         tenantId: ${data.azurerm_client_config.current.tenant_id}
