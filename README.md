@@ -17,3 +17,8 @@ kubectl apply -k argocd
 
 ## Add Public IP of Ingress Controller to cloudflare
 Set public ip address in cloudflare to ingress controller load balancer ip.
+
+## Setup crossplane
+Make sure you have the secret setup after installing crossplane as outlined in terraform section. 
+
+Apply the providers and the provider config in .providers.
