@@ -1,0 +1,18 @@
+apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
+kind: FlexibleServer
+metadata:
+  name: example-flex-server-ad-admin-${Rand.RFC1123Subdomain}
+  labels:
+    testing.upbound.io/example-name: example
+spec:
+  forProvider:
+    authentication:
+      - activeDirectoryAuthEnabled: true
+        tenantId: ${data.azurerm_client_config.current.tenant_id}
+    location: West Europe
+    resourceGroupNameSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    skuName: GP_Standard_B1ms
+    storageMb: 32768
+    version: "16"
