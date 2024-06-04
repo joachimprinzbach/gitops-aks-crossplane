@@ -8,7 +8,7 @@ data:
   admin.enabled: "true"
   url: "https://argocd.campbaloise.ch"
   # https://docs.crossplane.io/knowledge-base/integrations/argo-cd-crossplane/#set-resource-tracking-method
-  application.resourceTrackingMethod: "annotation"
+  # application.resourceTrackingMethod: "annotation"
   # https://docs.crossplane.io/knowledge-base/integrations/argo-cd-crossplane/#set-resource-exclusion
   resource.exclusions: |
     - apiGroups:
