@@ -7,3 +7,13 @@ metadata:
 spec:
   forProvider:
     location: "West Europe"
+---
+apiVersion: azure.upbound.io/v1beta1
+kind: ResourceGroup
+metadata:
+  name: crossplane-managed-rg2
+  labels:
+    testing.upbound.io/example-name: example
+spec:
+  forProvider:
+    location: "West Europe"
