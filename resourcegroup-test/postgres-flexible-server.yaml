@@ -9,7 +9,7 @@ spec:
     authentication:
       - activeDirectoryAuthEnabled: true
         passwordAuthEnabled: false
-        tenantId: ${data.azurerm_client_config.current.tenant_id}
+        tenantId: "922474ff-3ade-465e-9be4-04730b10a029"
     location: West Europe
     resourceGroupNameSelector:
       matchLabels:
