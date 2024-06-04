@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: aks-infra-apps
+  name: aks-infra-appset
   namespace: argocd
 spec:
   generators:
