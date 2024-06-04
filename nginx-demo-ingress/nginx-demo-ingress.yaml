@@ -1,15 +1,8 @@
 kind: Ingress
 metadata:
   name: nginx
-  annotations:
-    cert-manager.io/cluster-issuer: cloudflare-lets-encrypt
-    kubernetes.io/tls-acme: "true"
 spec:
   ingressClassName: webapprouting.kubernetes.azure.com
-  tls:
-    - hosts:
-        - nginx.campbaloise.ch
-      secretName: nginx-cert
   rules:
     - host: nginx.campbaloise.ch
       http:
@@ -57,17 +50,3 @@ spec:
           name: nginx
           ports:
             - containerPort: 80
-
----
-
-apiVersion: externaldns.k8s.io/v1alpha1
-kind: DNSEndpoint
-metadata:
-  name: "nginx.campbaloise.ch"
-spec:
-  endpoints:
-    - dnsName: "nginx.campbaloise.ch"
-      recordTTL: 180
-      recordType: CNAME
-      targets:
-        - "campbaloise.ch"
