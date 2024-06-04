@@ -5,7 +5,7 @@ metadata:
 data:
   server.insecure: "false"
   users.anonymous.enabled: "false"
-  admin.enabled: "true"
+  admin.enabled: "false"
   url: "https://argocd.campbaloise.ch"
   # https://docs.crossplane.io/knowledge-base/integrations/argo-cd-crossplane/#set-resource-tracking-method
   application.resourceTrackingMethod: "annotation"
