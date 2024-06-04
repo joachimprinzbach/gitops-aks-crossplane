@@ -8,10 +8,10 @@ spec:
   ingressClassName: webapprouting.kubernetes.azure.com
   tls:
     - hosts:
-        - nginx.campbaloise.com
+        - nginx.campbaloise.ch
       secretName: nginx-cert
   rules:
-    - host: nginx.campbaloise.com
+    - host: nginx.campbaloise.ch
       http:
         paths:
           - path: /
@@ -63,11 +63,11 @@ spec:
 apiVersion: externaldns.k8s.io/v1alpha1
 kind: DNSEndpoint
 metadata:
-  name: "nginx.campbaloise.com"
+  name: "nginx.campbaloise.ch"
 spec:
   endpoints:
-    - dnsName: "nginx.campbaloise.com"
+    - dnsName: "nginx.campbaloise.ch"
       recordTTL: 180
       recordType: CNAME
       targets:
-        - "campbaloise.com"
+        - "campbaloise.ch"
