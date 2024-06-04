@@ -14,6 +14,6 @@ spec:
     resourceGroupNameSelector:
       matchLabels:
         testing.upbound.io/example-name: example
-    skuName: B_Standard_B1ms
+    skuName: GP_Standard_D2ads_v5
     storageMb: 32768
     version: "16"
