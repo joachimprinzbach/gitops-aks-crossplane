@@ -5,4 +5,4 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "5"
 spec:
-  package: xpkg.upbound.io/upbound/provider-azure-network:v0.42.1
+  package: xpkg.upbound.io/upbound/provider-azure-network:v1.2.0
