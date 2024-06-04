@@ -15,6 +15,55 @@ data:
       - "*"
       kinds:
       - ProviderConfigUsage
+  resource.customizations: |
+    "*.azure.upbound.io/*":
+      health.lua.useOpenLibs: true
+      health.lua: |
+        hs = {
+          status = "Progressing",
+          message = "Waiting for resource to be created"
+        }
+        if obj.status and obj.status.conditions then
+          healthy = true
+          message_parts = {}
+          for i, condition in ipairs(obj.status.conditions) do
+            if healthy and condition.status ~= "True" then
+              healthy = false
+            end
+            table.insert(message_parts, condition.reason)
+          end
+          hs.message = table.concat(message_parts, ", ")
+          if healthy then
+            hs.status = "Healthy"
+          else
+            hs.status = "Degraded"
+          end
+        end
+        return hs
+  resource.customizations.health.dbforpostgresql.azure.upbound.io_FlexibleServer: |
+    hs = {}
+    if obj.status ~= nil then
+      if obj.status.conditions ~= nil then
+        synced = false
+        synced_message = ""
+        for i, condition in ipairs(obj.status.conditions) do
+          if condition.type == "Synced" then
+            synced = condition.status == "True"
+            synced_message = condition.reason
+          end
+        end
+        if synced then
+          hs.status = "Healthy"
+        else
+          hs.status = "Degraded"
+        end
+        hs.message = synced_message
+        return hs
+      end
+    end
+    hs.status = "Progressing"
+    hs.message = "Waiting for provider to be installed"
+    return hs
   dex.config: |
     connectors:
       - type: github
