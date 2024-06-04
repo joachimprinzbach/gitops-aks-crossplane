@@ -8,7 +8,7 @@ resources:
   - base/default-app-project.yaml
   - base/bootstrap-application-set.yaml
   - base/github-argocd-oauth-client.external-secret.yaml
-  # - base/argocd-ingress.yaml
+  - base/argocd-ingress.yaml
   - base/argocd-dns-endpoint.yaml
 patches:
   - path: overlays/argocd-cm.yaml
