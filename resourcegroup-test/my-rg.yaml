@@ -31,9 +31,9 @@ spec:
 apiVersion: azure.upbound.io/v1beta1
 kind: ResourceGroup
 metadata:
-  name: newrg2
+  name: newrg22
   labels:
     testing.upbound.io/example-name: example
 spec:
   forProvider:
-    location: "West Europe"
+    locatio: "West Europe"
