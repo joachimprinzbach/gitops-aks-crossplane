@@ -4,8 +4,7 @@ metadata:
   name: default
 spec:
   credentials:
-    source: Secret
-    secretRef:
-      namespace: crossplane-system
-      name: azure-secret
-      key: creds
+    source: UserAssignedManagedIdentity
+  clientID: 41eb1e42-3f3c-42df-a310-f64fbdb781d7
+  subscriptionID: 3e4d97c2-8bd1-4b12-99ed-303d1b77c4cc
+  tenantID: 922474ff-3ade-465e-9be4-04730b10a029
