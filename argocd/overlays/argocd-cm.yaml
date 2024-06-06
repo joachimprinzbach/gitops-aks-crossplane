@@ -16,54 +16,136 @@ data:
       kinds:
       - ProviderConfigUsage
   resource.customizations: |
-    "*.azure.upbound.io/*":
-      health.lua.useOpenLibs: true
+    "*.upbound.io/*":
       health.lua: |
-        hs = {
+        health_status = {
           status = "Progressing",
-          message = "Waiting for resource to be created"
+          message = "Provisioning ..."
         }
-        if obj.status and obj.status.conditions then
-          healthy = true
-          message_parts = {}
-          for i, condition in ipairs(obj.status.conditions) do
-            if healthy and condition.status ~= "True" then
-              healthy = false
+
+        local function contains (table, val)
+          for i, v in ipairs(table) do
+            if v == val then
+              return true
             end
-            table.insert(message_parts, condition.reason)
           end
-          hs.message = table.concat(message_parts, ", ")
-          if healthy then
-            hs.status = "Healthy"
-          else
-            hs.status = "Degraded"
-          end
+          return false
         end
-        return hs
-  resource.customizations.health.dbforpostgresql.azure.upbound.io_FlexibleServer: |
-    hs = {}
-    if obj.status ~= nil then
-      if obj.status.conditions ~= nil then
-        synced = false
-        synced_message = ""
+
+        local has_no_status = {
+          "ProviderConfig",
+          "ProviderConfigUsage"
+        }
+
+        if obj.status == nil or next(obj.status) == nil and contains(has_no_status, obj.kind) then
+          health_status.status = "Healthy"
+          health_status.message = "Resource is up-to-date."
+          return health_status
+        end
+
+        if obj.status == nil or next(obj.status) == nil or obj.status.conditions == nil then
+          if obj.kind == "ProviderConfig" and obj.status.users ~= nil then
+            health_status.status = "Healthy"
+            health_status.message = "Resource is in use."
+            return health_status
+          end
+          return health_status
+        end
+
         for i, condition in ipairs(obj.status.conditions) do
+          if condition.type == "LastAsyncOperation" then
+            if condition.status == "False" then
+              health_status.status = "Degraded"
+              health_status.message = condition.message
+              return health_status
+            end
+          end
+
           if condition.type == "Synced" then
-            synced = condition.status == "True"
-            synced_message = condition.reason
+            if condition.status == "False" then
+              health_status.status = "Degraded"
+              health_status.message = condition.message
+              return health_status
+            end
+          end
+
+          if condition.type == "Ready" then
+            if condition.status == "True" then
+              health_status.status = "Healthy"
+              health_status.message = "Resource is up-to-date."
+              return health_status
+            end
           end
         end
-        if synced then
-          hs.status = "Healthy"
-        else
-          hs.status = "Degraded"
+
+        return health_status
+
+    "*.crossplane.io/*":
+      health.lua: |
+        health_status = {
+          status = "Progressing",
+          message = "Provisioning ..."
+        }
+
+        local function contains (table, val)
+          for i, v in ipairs(table) do
+            if v == val then
+              return true
+            end
+          end
+          return false
         end
-        hs.message = synced_message
-        return hs
-      end
-    end
-    hs.status = "Progressing"
-    hs.message = "Waiting for provider to be installed"
-    return hs
+
+        local has_no_status = {
+          "Composition",
+          "CompositionRevision",
+          "DeploymentRuntimeConfig",
+          "ControllerConfig",
+          "ProviderConfig",
+          "ProviderConfigUsage"
+        }
+        if obj.status == nil or next(obj.status) == nil and contains(has_no_status, obj.kind) then
+            health_status.status = "Healthy"
+            health_status.message = "Resource is up-to-date."
+          return health_status
+        end
+
+        if obj.status == nil or next(obj.status) == nil or obj.status.conditions == nil then
+          if obj.kind == "ProviderConfig" and obj.status.users ~= nil then
+            health_status.status = "Healthy"
+            health_status.message = "Resource is in use."
+            return health_status
+          end
+          return health_status
+        end
+
+        for i, condition in ipairs(obj.status.conditions) do
+          if condition.type == "LastAsyncOperation" then
+            if condition.status == "False" then
+              health_status.status = "Degraded"
+              health_status.message = condition.message
+              return health_status
+            end
+          end
+
+          if condition.type == "Synced" then
+            if condition.status == "False" then
+              health_status.status = "Degraded"
+              health_status.message = condition.message
+              return health_status
+            end
+          end
+
+          if contains({"Ready", "Healthy", "Offered", "Established"}, condition.type) then
+            if condition.status == "True" then
+              health_status.status = "Healthy"
+              health_status.message = "Resource is up-to-date."
+              return health_status
+            end
+          end
+        end
+
+        return health_status
   dex.config: |
     connectors:
       - type: github

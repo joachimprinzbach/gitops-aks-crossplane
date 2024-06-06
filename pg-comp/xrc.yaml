@@ -17,10 +17,6 @@ spec:
         - fromFieldPath: metadata.labels
   resources:
 
-    # ------------------------------------------------------------------------------
-    # ResourceGroup
-    # https://doc.crds.dev/github.com/upbound/provider-azure/azure.upbound.io/ResourceGroup/v1beta1@v0.26.0
-    # ------------------------------------------------------------------------------
     - name: pgsqlrg
       base:
         apiVersion: azure.upbound.io/v1beta1
@@ -49,10 +45,6 @@ spec:
         - fromFieldPath: spec.writeConnectionSecretToRef.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    # ------------------------------------------------------------------------------
-    # VirtualNetwork
-    # https://doc.crds.dev/github.com/upbound/provider-azure/network.azure.upbound.io/VirtualNetwork/v1beta1@v0.26.0
-    # ------------------------------------------------------------------------------
     - name: pgsqlvn
       base:
         apiVersion: network.azure.upbound.io/v1beta2
@@ -90,10 +82,6 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    # ------------------------------------------------------------------------------
-    # Subnet - public
-    # https://doc.crds.dev/github.com/upbound/provider-azure/network.azure.upbound.io/Subnet/v1beta1@v0.26.0
-    # ------------------------------------------------------------------------------
     - name: pgsqldb-public-subnet
       base:
         apiVersion: network.azure.upbound.io/v1beta1
@@ -139,10 +127,6 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    # ------------------------------------------------------------------------------
-    # Subnet - private
-    # https://doc.crds.dev/github.com/upbound/provider-azure/network.azure.upbound.io/Subnet/v1beta1@v0.26.0
-    # ------------------------------------------------------------------------------
     - name: pgsqldb-private-subnet
       base:
         apiVersion: network.azure.upbound.io/v1beta1
@@ -194,10 +178,6 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    # ------------------------------------------------------------------------------
-    # PrivateDNSZone
-    # https://doc.crds.dev/github.com/upbound/provider-azure/network.azure.upbound.io/PrivateDNSZone/v1beta1@v0.26.0
-    # ------------------------------------------------------------------------------
     - name: pgsqldb-dnszone
       base:
         apiVersion: network.azure.upbound.io/v1beta1
@@ -234,10 +214,6 @@ spec:
         - fromFieldPath: spec.parameters.deletionPolicy
           toFieldPath: spec.deletionPolicy
 
-    # ------------------------------------------------------------------------------
-    # PrivateDNSZoneVirtualNetworkLink
-    # https://doc.crds.dev/github.com/upbound/provider-azure/network.azure.upbound.io/PrivateDNSZoneVirtualNetworkLink/v1beta1@v0.26.0
-    # ------------------------------------------------------------------------------
     - name: pgsqldb-dnsvlink
       base:
         apiVersion: network.azure.upbound.io/v1beta1
@@ -317,10 +293,6 @@ spec:
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
 
-    # ------------------------------------------------------------------------------
-    # FlexibleServer
-    # https://doc.crds.dev/github.com/upbound/provider-azure/dbforpostgresql.azure.upbound.io/FlexibleServer/v1beta1@v0.26.0
-    # ------------------------------------------------------------------------------
     - name: pgsqldb-server
       base:
         apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
@@ -372,10 +344,6 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    # ------------------------------------------------------------------------------
-    # FlexibleServerDatabase
-    # https://doc.crds.dev/github.com/upbound/provider-azure/dbforpostgresql.azure.upbound.io/FlexibleServerDatabase/v1beta1@v0.26.0
-    # ------------------------------------------------------------------------------
     - name: pgsqldb
       base:
         apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
@@ -408,10 +376,6 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    # ------------------------------------------------------------------------------
-    # FlexibleServerFirewallRule
-    # https://doc.crds.dev/github.com/upbound/provider-azure/dbforpostgresql.azure.upbound.io/FlexibleServerFirewallRule/v1beta1@v0.26.0
-    # ------------------------------------------------------------------------------
     - name: psqldbnr
       base:
         apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
@@ -445,11 +409,6 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    # ------------------------------------------------------------------------------
-    # VirtualNetworkPeering
-    # Allow connections from the VNET the workload cluster is contained in
-    # https://doc.crds.dev/github.com/upbound/provider-azure/network.azure.upbound.io/VirtualNetworkPeering/v1beta1@v0.26.0
-    # ------------------------------------------------------------------------------
     - name: k8saccesspsql
       base:
         apiVersion: network.azure.upbound.io/v1beta1
@@ -491,9 +450,6 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    # ------------------------------------------------------------------------------
-    # VirtualNetworkPeering - Reverse peering route
-    # ------------------------------------------------------------------------------
     - name: psqlaccessk8s
       base:
         apiVersion: network.azure.upbound.io/v1beta1
