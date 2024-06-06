@@ -1,7 +1,7 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: pgsql-vnet
+  name: postgres-composition
   labels:
     provider: azure
     dbengine: postgresql

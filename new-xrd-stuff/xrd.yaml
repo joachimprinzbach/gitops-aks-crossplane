@@ -6,7 +6,7 @@ spec:
   connectionSecretKeys:
     - kubeconfig
   defaultCompositionRef:
-    name: pgsql-vnet
+    name: postgres-composition
   group: databases.cloud-platform.baloise.com
   names:
     kind: XPostgreSQLDatabase
