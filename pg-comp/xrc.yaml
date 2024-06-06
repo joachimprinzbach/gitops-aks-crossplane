@@ -9,7 +9,7 @@ metadata:
 spec:
   compositeTypeRef:
     apiVersion: crossplane.joachim.io/v1alpha1
-    kind: CompositeApdb
+    kind: CompositePostgreSQLServer
   writeConnectionSecretsToNamespace: default
   patchSets:
     - name: metadata

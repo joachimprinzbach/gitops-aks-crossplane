@@ -11,11 +11,11 @@ spec:
     name: pgsql-vnet
   group: crossplane.joachim.io
   names:
-    kind: CompositeApdb
+    kind: CompositePostgreSQLServer
     plural: apdbs
   claimNames:
-    kind: ApdbClaim
-    plural: apdbclaims
+    kind: PostgreSQLServerClaim
+    plural: postgresqlserverclaims
   versions:
     - name: v1alpha1
       served: true

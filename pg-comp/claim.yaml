@@ -1,6 +1,6 @@
 ---
 apiVersion: crossplane.joachim.io/v1alpha1
-kind: ApdbClaim
+kind: PostgreSQLServerClaim
 metadata:
   name: crossplane-azure-pgsql
   labels:
