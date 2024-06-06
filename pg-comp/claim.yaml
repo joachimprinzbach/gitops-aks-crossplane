@@ -14,7 +14,7 @@ spec:
       provider: azure
       example: postgres-vnet
   parameters:
-    providerConfigRef: postgres-vnet
+    providerConfigRef: default
     location: West Europe
     vnetRanges:
       - 10.9.0.0/24
