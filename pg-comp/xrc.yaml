@@ -8,7 +8,7 @@ metadata:
     example: postgres-vnet
 spec:
   compositeTypeRef:
-    apiVersion: crossplane.giantswarm.io/v1alpha1
+    apiVersion: crossplane.joachim.io/v1alpha1
     kind: CompositeApdb
   writeConnectionSecretsToNamespace: default
   patchSets:

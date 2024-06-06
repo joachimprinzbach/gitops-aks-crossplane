@@ -3,13 +3,13 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: apdbs.crossplane.giantswarm.io
+  name: apdbs.crossplane.joachim.io
 spec:
   connectionSecretKeys:
     - kubeconfig
   defaultCompositionRef:
     name: pgsql-vnet
-  group: crossplane.giantswarm.io
+  group: crossplane.joachim.io
   names:
     kind: CompositeApdb
     plural: apdbs
