@@ -1,4 +1,4 @@
-apiVersion: databases.baloise.com/v1alpha1
+apiVersion: databases.cloud-platform.baloise.com/v1alpha1
 kind: PostgreSQLClaim
 metadata:
   name: crossplane-azure-pgsql
