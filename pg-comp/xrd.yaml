@@ -116,6 +116,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-public"
 
         - fromFieldPath: spec.parameters.providerConfigRef
@@ -132,6 +133,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-pub-snet"
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
@@ -169,6 +171,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-private"
 
         - fromFieldPath: spec.parameters.providerConfigRef
@@ -185,6 +188,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-pri-snet"
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
@@ -207,6 +211,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s.postgres.database.azure.com"
         - fromFieldPath: spec.name
           toFieldPath: metadata.name
@@ -216,6 +221,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-dnszone"
 
         - fromFieldPath: spec.parameters.providerConfigRef
@@ -249,6 +255,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-psqlzone"
 
         - fromFieldPath: spec.name
@@ -256,6 +263,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-dnszonevlink"
 
         - fromFieldPath: spec.parameters.providerConfigRef
@@ -285,6 +293,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-k8slink"
 
         - fromFieldPath: spec.parameters.providerConfigRef
@@ -301,6 +310,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-k8slink"
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
@@ -335,6 +345,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-svr"
 
         - fromFieldPath: spec.parameters.providerConfigRef
@@ -367,6 +378,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-svr"
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
@@ -402,6 +414,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-db"
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
@@ -438,6 +451,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-fsfr"
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
@@ -466,6 +480,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-inbound"
 
         - fromFieldPath: spec.parameters.providerConfigRef
@@ -482,6 +497,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-k8saccess"
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
@@ -506,6 +522,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-outbound"
 
         - fromFieldPath: spec.parameters.providerConfigRef
@@ -524,6 +541,7 @@ spec:
           transforms:
             - type: string
               string:
+                type: Format
                 fmt: "%s-psqlaccess"
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
