@@ -5,7 +5,7 @@ metadata:
   labels:
     owner: joachim
 spec:
-  name: joachim-psql
+  name: example-postgres-1
   namespace: user-namespace
   compositionSelector:
     matchLabels:
