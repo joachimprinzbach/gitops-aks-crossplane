@@ -327,8 +327,6 @@ spec:
         kind: FlexibleServer
         spec:
           forProvider:
-            administratorLogin: admin
-            administratorPasswordSecretRef: {}
             authentication:
               - activeDirectoryAuthEnabled: true
                 passwordAuthEnabled: false
