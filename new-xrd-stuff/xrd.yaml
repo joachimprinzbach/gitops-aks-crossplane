@@ -1,7 +1,7 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: postgresqlclaims.databases.cloud-platform.baloise.com
+  name: xpostgresqldatabases.databases.cloud-platform.baloise.com
 spec:
   connectionSecretKeys:
     - kubeconfig
