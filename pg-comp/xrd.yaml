@@ -43,7 +43,8 @@ spec:
           transforms:
             - type: string
               string:
-              fmt: "%s-rg"
+                type: Format
+                fmt: "%s-rg"
 
         - fromFieldPath: spec.writeConnectionSecretToRef.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
