@@ -353,16 +353,6 @@ spec:
         - fromFieldPath: spec.parameters.deletionPolicy
           toFieldPath: spec.deletionPolicy
 
-        - fromFieldPath: spec.parameters.db.admin
-          toFieldPath: spec.forProvider.administratorLogin
-
-        - fromFieldPath: spec.parameters.db.secret.key
-          toFieldPath: spec.forProvider.administratorPasswordSecretRef.key
-        - fromFieldPath: spec.parameters.db.secret.name
-          toFieldPath: spec.forProvider.administratorPasswordSecretRef.name
-        - fromFieldPath: spec.namespace
-          toFieldPath: spec.forProvider.administratorPasswordSecretRef.namespace
-
         - fromFieldPath: spec.parameters.location
           toFieldPath: spec.forProvider.location
         - fromFieldPath: spec.parameters.sku
