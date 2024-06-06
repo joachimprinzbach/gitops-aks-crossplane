@@ -7,7 +7,7 @@ metadata:
     dbengine: postgresql
 spec:
   compositeTypeRef:
-    apiVersion: databases.baloise.com/v1alpha1
+    apiVersion: databases.cloud-platform.baloise.com/v1alpha1
     kind: CompositePostgreSQLServer
   writeConnectionSecretsToNamespace: default
   patchSets:
