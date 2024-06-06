@@ -6,7 +6,6 @@ metadata:
     owner: joachim
 spec:
   name: joachim-psql
-  namespace: default
   compositionSelector:
     matchLabels:
       provider: azure

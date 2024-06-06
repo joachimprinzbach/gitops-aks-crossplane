@@ -8,7 +8,7 @@ metadata:
 spec:
   compositeTypeRef:
     apiVersion: databases.cloud-platform.baloise.com/v1alpha1
-    kind: CompositePostgreSQLServer
+    kind: XPostgreSQLDatabase
   writeConnectionSecretsToNamespace: default
   patchSets:
     - name: metadata
