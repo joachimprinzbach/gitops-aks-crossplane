@@ -12,7 +12,7 @@ spec:
       dbengine: postgresql
   parameters:
     providerConfigRef: default
-    location: West Europe
+    location: Germany West Central
     vnetRanges:
       - 10.9.0.0/24
     subnets:
@@ -20,7 +20,7 @@ spec:
       private: 10.9.0.128/25
     sku: GP_Standard_D2s_v3
     db:
-      version: "16"
+      version: "14"
       admin: joachim
       secret:
         name: azure-db-pass
