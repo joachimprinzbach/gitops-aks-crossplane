@@ -79,12 +79,12 @@ spec:
                         version:
                           description: The version of postgresdb to install
                           type: string
-                          default: "14"
+                          default: "16"
                           enum:
-                            - "11"
                             - "12"
                             - "13"
                             - "14"
+                            - "16"
                         size:
                           description: The max storage size (in mb) of the database
                           type: number
