@@ -32,6 +32,6 @@ spec:
         startAddr: 10.0.0.0
         endAddr: 10.0.0.0
     remoteResourceGroup:
-      name: ${AZURE_RG}
-      vnetId: "/subscriptions/${AZURE_SUBSCRIPTION_ID}/resourceGroups/${AZURE_RG}/providers/Microsoft.Network/virtualNetworks/${AZURE_VNET}"
-      vnetName: ${AZURE_VNET}
+      name: rg-lasting-peacock
+      vnetId: "/subscriptions/3e4d97c2-8bd1-4b12-99ed-303d1b77c4cc/resourceGroups/rg-lasting-peacock/providers/Microsoft.Network/virtualNetworks/aks-vnet-15142108"
+      vnetName: aks-vnet-15142108
