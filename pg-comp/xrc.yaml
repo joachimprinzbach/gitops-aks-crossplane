@@ -330,8 +330,8 @@ spec:
             administratorLogin: admin
             administratorPasswordSecretRef: {}
             authentication:
-              - activeDirectoryAuthEnabled: false
-                passwordAuthEnabled: true
+              - activeDirectoryAuthEnabled: true
+                passwordAuthEnabled: false
             resourceGroupNameSelector:
               matchControllerRef: true
             privateDnsZoneIdSelector:
