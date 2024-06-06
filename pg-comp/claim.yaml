@@ -1,6 +1,5 @@
----
-apiVersion: crossplane.joachim.io/v1alpha1
-kind: PostgreSQLServerClaim
+apiVersion: databases.baloise.com/v1alpha1
+kind: PostgreSQLClaim
 metadata:
   name: crossplane-azure-pgsql
   labels:
@@ -11,7 +10,7 @@ spec:
   compositionSelector:
     matchLabels:
       provider: azure
-      example: postgres-vnet
+      dbengine: postgresql
   parameters:
     providerConfigRef: default
     location: West Europe

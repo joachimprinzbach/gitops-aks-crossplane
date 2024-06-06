@@ -1,14 +1,13 @@
----
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
   name: pgsql-vnet
   labels:
     provider: azure
-    example: postgres-vnet
+    dbengine: postgresql
 spec:
   compositeTypeRef:
-    apiVersion: crossplane.joachim.io/v1alpha1
+    apiVersion: databases.baloise.com/v1alpha1
     kind: CompositePostgreSQLServer
   writeConnectionSecretsToNamespace: default
   patchSets:
@@ -16,8 +15,7 @@ spec:
       patches:
         - fromFieldPath: metadata.labels
   resources:
-
-    - name: pgsqlrg
+    - name: ResourceGroup
       base:
         apiVersion: azure.upbound.io/v1beta1
         kind: ResourceGroup
@@ -44,8 +42,7 @@ spec:
 
         - fromFieldPath: spec.writeConnectionSecretToRef.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
-
-    - name: pgsqlvn
+    - name: PostgreSQLVirtualNetwork
       base:
         apiVersion: network.azure.upbound.io/v1beta2
         kind: VirtualNetwork
@@ -82,7 +79,7 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    - name: pgsqldb-public-subnet
+    - name: PostgreSQLPublicSubnet
       base:
         apiVersion: network.azure.upbound.io/v1beta1
         kind: Subnet
@@ -127,7 +124,7 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    - name: pgsqldb-private-subnet
+    - name: PostgreSQLPrivateSubnet
       base:
         apiVersion: network.azure.upbound.io/v1beta1
         kind: Subnet
@@ -178,7 +175,7 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    - name: pgsqldb-dnszone
+    - name: PostgreSQLDNSZone
       base:
         apiVersion: network.azure.upbound.io/v1beta1
         kind: PrivateDNSZone
@@ -214,7 +211,7 @@ spec:
         - fromFieldPath: spec.parameters.deletionPolicy
           toFieldPath: spec.deletionPolicy
 
-    - name: pgsqldb-dnsvlink
+    - name: PostgreSQLDNSVLink
       base:
         apiVersion: network.azure.upbound.io/v1beta1
         kind: PrivateDNSZoneVirtualNetworkLink
@@ -253,7 +250,7 @@ spec:
           toFieldPath: spec.deletionPolicy
 
 
-    - name: pgsqldb-k8svlink
+    - name: PostgreSQLK8sVLink
       base:
         apiVersion: network.azure.upbound.io/v1beta1
         kind: PrivateDNSZoneVirtualNetworkLink
@@ -293,7 +290,7 @@ spec:
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
 
-    - name: pgsqldb-server
+    - name: PostgreSQLFlexibleServer
       base:
         apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
         kind: FlexibleServer
@@ -344,7 +341,7 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    - name: pgsqldb
+    - name: PostgreSQLServerDatabase
       base:
         apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
         kind: FlexibleServerDatabase
@@ -376,7 +373,7 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    - name: psqldbnr
+    - name: PostgreSQLFirewallRule
       base:
         apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
         kind: FlexibleServerFirewallRule
@@ -409,7 +406,7 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    - name: k8saccesspsql
+    - name: PostgreSQLAKSVNetPeering
       base:
         apiVersion: network.azure.upbound.io/v1beta1
         kind: VirtualNetworkPeering
@@ -450,7 +447,7 @@ spec:
         - fromFieldPath: spec.namespace
           toFieldPath: spec.writeConnectionSecretToRef.namespace
 
-    - name: psqlaccessk8s
+    - name: AKSPostgreSQLVNetPeering
       base:
         apiVersion: network.azure.upbound.io/v1beta1
         kind: VirtualNetworkPeering
