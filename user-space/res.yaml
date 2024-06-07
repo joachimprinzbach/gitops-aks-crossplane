@@ -20,9 +20,7 @@ spec:
 apiVersion: azure.upbound.io/v1beta1
 kind: ResourceGroup
 metadata:
-  name: myawesomerg
-  labels:
-    testing.upbound.io/example-name: referenceme
+  name: referenceme
 spec:
   forProvider:
     location: "Germany West Central"
