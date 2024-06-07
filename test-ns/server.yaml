@@ -1,4 +1,4 @@
-apiVersion: cache.azure.upbound.io/v1beta2
+apiVersion: cache.azure.upbound.io/v1beta1
 kind: RedisCache
 metadata:
   name: my-b03786-redis
@@ -24,7 +24,7 @@ spec:
   forProvider:
     location: "West Europe"
 ---
-apiVersion: cache.azure.upbound.io/v1beta2
+apiVersion: cache.azure.upbound.io/v1beta1
 kind: RedisCache
 metadata:
   name: my-b03786-redis-2
@@ -42,7 +42,7 @@ spec:
         testing.upbound.io/example-name: example
     skuName: Basic
 ---
-apiVersion: cache.azure.upbound.io/v1beta2
+apiVersion: cache.azure.upbound.io/v1beta1
 kind: RedisCache
 metadata:
   name: my-b03786-redis-3
@@ -60,7 +60,7 @@ spec:
         testing.upbound.io/example-name: example
     skuName: Basic
 ---
-apiVersion: dbforpostgresql.azure.upbound.io/v1beta2
+apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
 kind: FlexibleServer
 metadata:
   annotations:
