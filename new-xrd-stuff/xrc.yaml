@@ -300,6 +300,7 @@ spec:
             authentication:
               - activeDirectoryAuthEnabled: true
                 passwordAuthEnabled: false
+                tenantId: 922474ff-3ade-465e-9be4-04730b10a029
             resourceGroupNameSelector:
               matchControllerRef: true
             privateDnsZoneIdSelector:
