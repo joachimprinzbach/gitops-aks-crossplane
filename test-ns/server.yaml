@@ -1,10 +1,6 @@
 apiVersion: cache.azure.upbound.io/v1beta2
 kind: RedisCache
 metadata:
-  annotations:
-    meta.upbound.io/example-id: cache/v1beta2/rediscache
-  labels:
-    testing.upbound.io/example-name: example
   name: my-b03786-redis
 spec:
   forProvider:
