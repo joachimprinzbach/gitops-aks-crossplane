@@ -13,7 +13,7 @@ spec:
     autoGrowEnabled: false
     backupRetentionDays: 7
     geoRedundantBackupEnabled: false
-    sslEnforcementEnabled: false
+    sslEnforcementEnabled: true
     resourceGroupNameRef:
       name: example-postgres-1
     skuName: B_Gen5_2
