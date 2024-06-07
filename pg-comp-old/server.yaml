@@ -16,6 +16,6 @@ spec:
     sslEnforcementEnabled: false
     resourceGroupNameRef:
       name: example-postgres-1
-    skuName: GP_Standard_D2s_v3
+    skuName: B_Gen5_2
     storageMb: 32768
     version: '14'
