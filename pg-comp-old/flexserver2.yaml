@@ -1,4 +1,4 @@
-apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
+apiVersion: dbforpostgresql.azure.upbound.io/v1beta2
 kind: FlexibleServer
 metadata:
   name: example-flexydexy-3
