@@ -59,3 +59,24 @@ spec:
       matchLabels:
         testing.upbound.io/example-name: example
     skuName: Basic
+---
+apiVersion: dbforpostgresql.azure.upbound.io/v1beta2
+kind: FlexibleServer
+metadata:
+  annotations:
+    meta.upbound.io/example-id: dbforpostgresql/v1beta2/flexibleserver
+  labels:
+    testing.upbound.io/example-name: example
+  name: example-flexydexy-2
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    authentication:
+      activeDirectoryAuthEnabled: true
+      passwordAuthEnabled: false
+    location: Germany West Central
+    resourceGroupNameRef:
+      name: example-postgres-1
+    skuName: GP_Standard_D2s_v3
+    storageMb: 32768
+    version: '14'
