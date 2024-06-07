@@ -1,0 +1,26 @@
+apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
+kind: FlexibleServer
+metadata:
+  name: example-flexydexy-2
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    location: "Germany West Central"
+    skuName: GP_Standard_D2s_v3
+    storageMb: 32768
+    version: '14'
+    authentication:
+      - passwordAuthEnabled: false
+        activeDirectoryAuthEnabled: true
+        tenantId: 922474ff-3ade-465e-9be4-04730b10a029
+    resourceGroupName: referenceme
+    storageTier: P4
+    autoGeneratePassword: true
+---
+apiVersion: azure.upbound.io/v1beta1
+kind: ResourceGroup
+metadata:
+  name: referenceme
+spec:
+  forProvider:
+    location: "Germany West Central"
