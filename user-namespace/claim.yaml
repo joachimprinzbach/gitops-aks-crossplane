@@ -30,6 +30,6 @@ spec:
         startAddr: 10.0.0.0
         endAddr: 10.0.0.0
     remoteResourceGroup:
-      name: MC_rg-lasting-peacock_aks-lasting-peacock_germanywestcentral
-      vnetId: "/subscriptions/3e4d97c2-8bd1-4b12-99ed-303d1b77c4cc/resourceGroups/MC_rg-lasting-peacock_aks-lasting-peacock_germanywestcentral/providers/Microsoft.Network/virtualNetworks/aks-vnet-15142108"
-      vnetName: aks-vnet-15142108
+      name: MC_rg-profound-basilisk_aks-profound-basilisk_germanywestcentral
+      vnetId: "/subscriptions/3e4d97c2-8bd1-4b12-99ed-303d1b77c4cc/resourceGroups/MC_rg-profound-basilisk_aks-profound-basilisk_germanywestcentral/providers/Microsoft.Network/virtualNetworks/aks-vnet-37120753"
+      vnetName: aks-vnet-37120753
