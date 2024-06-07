@@ -1,7 +1,7 @@
 apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
 kind: FlexibleServer
 metadata:
-  name: example-flexydexy
+  name: example-flexydexy-3
 spec:
   deletionPolicy: Delete
   forProvider:
