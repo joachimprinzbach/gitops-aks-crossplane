@@ -23,3 +23,21 @@ metadata:
 spec:
   forProvider:
     location: "West Europe"
+---
+apiVersion: cache.azure.upbound.io/v1beta2
+kind: RedisCache
+metadata:
+  name: my-b03786-redis-2
+spec:
+  forProvider:
+    capacity: 0
+    enableNonSslPort: false
+    family: C
+    location: West Europe
+    minimumTlsVersion: "1.2"
+    redisVersion: "6"
+    redisConfiguration: {}
+    resourceGroupNameSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    skuName: Basic
