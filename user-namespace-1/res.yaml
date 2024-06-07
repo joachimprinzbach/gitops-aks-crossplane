@@ -1,20 +1,23 @@
-apiVersion: cache.azure.upbound.io/v1beta1
-kind: RedisCache
+apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
+kind: FlexibleServer
 metadata:
-  name: my-b03786-redis
+  annotations:
+    meta.upbound.io/example-id: dbforpostgresql/v1beta2/flexibleserver
+  labels:
+    testing.upbound.io/example-name: example
+  name: example-flexydexy-2
 spec:
+  deletionPolicy: Delete
   forProvider:
-    capacity: 0
-    enableNonSslPort: false
-    family: C
-    location: West Europe
-    minimumTlsVersion: "1.2"
-    redisVersion: "6"
-    redisConfiguration: {}
-    resourceGroupNameSelector:
-      matchLabels:
-        testing.upbound.io/example-name: referenceme
-    skuName: Basic
+    authentication:
+      activeDirectoryAuthEnabled: true
+      passwordAuthEnabled: false
+    location: "Germany West Central"
+    resourceGroupNameRef:
+      name: referenceme
+    skuName: GP_Standard_D2s_v3
+    storageMb: 32768
+    version: '14'
 ---
 apiVersion: azure.upbound.io/v1beta1
 kind: ResourceGroup
@@ -24,4 +27,4 @@ metadata:
     testing.upbound.io/example-name: referenceme
 spec:
   forProvider:
-    location: "West Europe"
+    location: "Germany West Central"
