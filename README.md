@@ -19,6 +19,6 @@ kubectl apply -k argocd
 Set public ip address in cloudflare to ingress controller load balancer ip.
 
 ## Setup crossplane
-Make sure you have the secret setup after installing crossplane as outlined in terraform section. 
+Replace the providerConfig client id with the managedidentity client id of the kubelet identity.
 
 Apply the providers and the provider config in .providers.
