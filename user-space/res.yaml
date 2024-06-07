@@ -5,15 +5,17 @@ metadata:
 spec:
   deletionPolicy: Delete
   forProvider:
-    authentication:
-      activeDirectoryAuthEnabled: true
-      passwordAuthEnabled: false
     location: "Germany West Central"
-    resourceGroupNameRef:
-      name: referenceme
     skuName: GP_Standard_D2s_v3
     storageMb: 32768
     version: '14'
+    authentication:
+      - passwordAuthEnabled: false
+        activeDirectoryAuthEnabled: true
+        tenantId: 922474ff-3ade-465e-9be4-04730b10a029
+    resourceGroupName: referenceme
+    storageTier: P4
+    autoGeneratePassword: true
 ---
 apiVersion: azure.upbound.io/v1beta1
 kind: ResourceGroup
