@@ -293,7 +293,7 @@ spec:
 
     - name: PostgreSQLFlexibleServer
       base:
-        apiVersion: dbforpostgresql.azure.upbound.io/v1beta2
+        apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
         kind: FlexibleServer
         spec:
           forProvider:
