@@ -5,8 +5,8 @@ metadata:
   labels:
     owner: joachim
 spec:
-  name: example-postgres-1
-  namespace: user-namespace
+  name: example-postgres-2
+  namespace: user-namespace2
   compositionSelector:
     matchLabels:
       provider: azure
