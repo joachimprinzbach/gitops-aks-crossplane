@@ -19,3 +19,11 @@ spec:
       matchLabels:
         testing.upbound.io/example-name: example
     skuName: Basic
+---
+apiVersion: azure.upbound.io/v1beta1
+kind: ResourceGroup
+metadata:
+  name: myawesomerg
+spec:
+  forProvider:
+    location: "West Europe"
