@@ -1,0 +1,27 @@
+apiVersion: cache.azure.upbound.io/v1beta1
+kind: RedisCache
+metadata:
+  name: my-b03786-redis
+spec:
+  forProvider:
+    capacity: 0
+    enableNonSslPort: false
+    family: C
+    location: West Europe
+    minimumTlsVersion: "1.2"
+    redisVersion: "6"
+    redisConfiguration: {}
+    resourceGroupNameSelector:
+      matchLabels:
+        testing.upbound.io/example-name: referenceme
+    skuName: Basic
+---
+apiVersion: azure.upbound.io/v1beta1
+kind: ResourceGroup
+metadata:
+  name: myawesomerg
+  labels:
+    testing.upbound.io/example-name: referenceme
+spec:
+  forProvider:
+    location: "West Europe"

@@ -1,0 +1,29 @@
+apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
+kind: FlexibleServer
+metadata:
+  name: example-123
+  finalizers:
+    - finalizer.managedresource.crossplane.io
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    skuName: GP_Standard_D2s_v3
+    zone: '3'
+    storageMb: 32768
+    backupRetentionDays: 7
+    location: West Europe
+    resourceGroupNameRef:
+      name: nikplane-managed-rg
+    version: '14'
+    authentication:
+      - passwordAuthEnabled: false
+        activeDirectoryAuthEnabled: true
+        tenantId: 922474ff-3ade-465e-9be4-04730b10a029
+    resourceGroupName: nikplane-managed-rg
+    storageTier: P4
+    autoGeneratePassword: true
+  initProvider: {}
+  managementPolicies:
+    - '*'
+  providerConfigRef:
+    name: default
