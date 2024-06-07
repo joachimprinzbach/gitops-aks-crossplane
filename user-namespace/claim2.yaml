@@ -1,7 +1,7 @@
 apiVersion: databases.cloud-platform.baloise.com/v1alpha1
 kind: PostgreSQLClaim
 metadata:
-  name: crossplane-azure-pgsql
+  name: crossplane-azure-pgsql-2
   labels:
     owner: joachim
 spec:
