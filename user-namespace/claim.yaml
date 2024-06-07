@@ -1,0 +1,35 @@
+apiVersion: databases.cloud-platform.baloise.com/v1alpha1
+kind: PostgreSQLClaim
+metadata:
+  name: crossplane-azure-pgsql-2
+  labels:
+    owner: joachim
+spec:
+  name: example-postgres-2
+  namespace: user-namespace
+  compositionSelector:
+    matchLabels:
+      provider: azure
+      dbengine: postgresql
+  parameters:
+    providerConfigRef: default
+    location: Germany West Central
+    vnetRanges:
+      - 10.9.0.0/24
+    subnets:
+      public: 10.9.0.0/25
+      private: 10.9.0.128/25
+    sku: GP_Standard_D2s_v3
+    db:
+      version: "14"
+      admin: joachim
+      secret:
+        name: azure-db-pass
+        key: database-password
+      firewall:
+        startAddr: 10.0.0.0
+        endAddr: 10.0.0.0
+    remoteResourceGroup:
+      name: MC_rg-profound-basilisk_aks-profound-basilisk_germanywestcentral
+      vnetId: "/subscriptions/3e4d97c2-8bd1-4b12-99ed-303d1b77c4cc/resourceGroups/MC_rg-profound-basilisk_aks-profound-basilisk_germanywestcentral/providers/Microsoft.Network/virtualNetworks/aks-vnet-37120753"
+      vnetName: aks-vnet-37120753
