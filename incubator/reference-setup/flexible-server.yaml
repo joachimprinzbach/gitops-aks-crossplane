@@ -1,0 +1,37 @@
+apiVersion: dbforpostgresql.azure.upbound.io/v1beta2
+kind: FlexibleServer
+metadata:
+  annotations:
+    meta.upbound.io/example-id: dbforpostgresql/v1beta2/flexibleserver
+  labels:
+    testing.upbound.io/example-name: example
+  name: example
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    location: West Europe
+    administratorLogin: psqladmin
+    autoGeneratePassword: true
+    administratorPasswordSecretRef:
+      key: example-key
+      name: example-secret
+      namespace: crossplane-system
+    authentication:
+      activeDirectoryAuthEnabled: true
+      passwordAuthEnabled: true
+      tenantId: 922474ff-3ade-465e-9be4-04730b10a029
+#    delegatedSubnetIdSelector:
+#      matchLabels:
+#        testing.upbound.io/example-name: example
+#
+#    privateDnsZoneIdSelector:
+#      matchLabels:
+#        testing.upbound.io/example-name: example
+    resourceGroupNameSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    skuName: GP_Standard_D2s_v3
+    storageMb: 32768
+#    storageTier: P30
+    version: "16"
+    zone: "3"

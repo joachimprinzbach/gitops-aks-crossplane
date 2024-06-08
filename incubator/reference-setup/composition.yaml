@@ -1,0 +1,78 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: postgresql-flexible-server
+spec:
+  patchSets:
+    - name: Metadata
+      patches:
+        - fromFieldPath: metadata.labels
+        - fromFieldPath: metadata.annotations
+        - fromFieldPath: metadata.labels["crossplane.io/claim-name"]
+          toFieldPath: metadata.annotations["crossplane.io/external-name"]
+        - fromFieldPath: spec.location
+          toFieldPath: spec.forProvider.location
+        - fromFieldPath: spec.deletionPolicy
+          toFieldPath: spec.deletionPolicy
+  compositeTypeRef:
+    apiVersion: databases.platform.baloise.app/v1alpha1
+    kind: PostgreSQLDatabase
+#  writeConnectionSecretsToNamespace: crossplane-system
+  resources:
+    - name: ResourceGroup
+      base:
+        apiVersion: azure.upbound.io/v1beta1
+        kind: ResourceGroup
+        spec:
+          deletionPolicy: Delete
+          forProvider:
+            location: "West Europe"
+      patches:
+        - type: PatchSet
+          patchSetName: Metadata
+    - name: FlexibleServer
+      base:
+        apiVersion: dbforpostgresql.azure.upbound.io/v1beta2
+        kind: FlexibleServer
+        spec:
+          deletionPolicy: Delete
+          forProvider:
+            location: "West Europe"
+            administratorLogin: psqladmin
+            autoGeneratePassword: true
+            administratorPasswordSecretRef:
+              key: password
+              # name: <replaced>
+              # namespace: crossplane-system
+            authentication:
+              activeDirectoryAuthEnabled: true
+              passwordAuthEnabled: true
+              tenantId: 922474ff-3ade-465e-9be4-04730b10a029
+            resourceGroupNameSelector:
+              matchControllerRef: true
+            skuName: GP_Standard_D2s_v3
+            storageMb: 32768
+            #    storageTier: P30
+            version: "16"
+            zone: "3"
+      patches:
+        - type: PatchSet
+          patchSetName: Metadata
+        - fromFieldPath: metadata.labels["crossplane.io/claim-namespace"]
+          toFieldPath: spec.administratorPasswordSecretRef.namespace
+        - fromFieldPath: metadata.labels["crossplane.io/claim-name"]
+          toFieldPath: spec.forProvider.administratorPasswordSecretRef.name
+    - name: FlexibleServerDatabase
+      base:
+        apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
+        kind: FlexibleServerDatabase
+        spec:
+          deletionPolicy: Delete
+          forProvider:
+            charset: utf8
+            collation: en_US.utf8
+            serverIdSelector:
+              matchControllerRef: true
+      patches:
+        - type: PatchSet
+          patchSetName: Metadata

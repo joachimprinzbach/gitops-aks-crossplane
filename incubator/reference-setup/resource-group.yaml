@@ -1,0 +1,10 @@
+apiVersion: azure.upbound.io/v1beta1
+kind: ResourceGroup
+metadata:
+  name: example
+  labels:
+    testing.upbound.io/example-name: example
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    location: "West Europe"
