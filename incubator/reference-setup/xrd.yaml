@@ -1,12 +1,12 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: postgresqldatabases.databases.platform.baloise.app
+  name: postgresqlservers.databases.platform.baloise.app
 spec:
   group: databases.platform.baloise.app
   names:
-    kind: PostgreSQLDatabase
-    plural: postgresqldatabases
+    kind: PostgreSQLServer
+    plural: postgresqlservers
   versions:
     - name: v1alpha1
       schema:
@@ -29,6 +29,6 @@ spec:
       served: true
       referenceable: true
   claimNames:
-    kind: PostgreSQLDatabaseClaim
-    plural: postgresqldatabaseclaims
+    kind: PostgreSQLServerClaim
+    plural: postgresqlserverclaims
 ---

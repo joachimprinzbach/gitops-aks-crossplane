@@ -16,7 +16,7 @@ spec:
           toFieldPath: spec.deletionPolicy
   compositeTypeRef:
     apiVersion: databases.platform.baloise.app/v1alpha1
-    kind: PostgreSQLDatabase
+    kind: PostgreSQLServer
 #  writeConnectionSecretsToNamespace: crossplane-system
   resources:
     - name: ResourceGroup
@@ -42,8 +42,8 @@ spec:
             autoGeneratePassword: true
             administratorPasswordSecretRef:
               key: password
-              # name: <replaced>
-              # namespace: crossplane-system
+              name: secret
+              namespace: crossplane-system
             authentication:
               activeDirectoryAuthEnabled: true
               passwordAuthEnabled: true
@@ -76,3 +76,11 @@ spec:
       patches:
         - type: PatchSet
           patchSetName: Metadata
+---
+#combine:
+#  variables:
+#    - fromFieldPath: spec.desiredRegion
+#    - fromFieldPath: spec.field2
+#  strategy: string
+#  string:
+#    fmt: "my-resource-%s-%s"

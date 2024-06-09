@@ -3,6 +3,6 @@ kind: Provider
 metadata:
   name: provider-azure-dbforpostgresql
 spec:
-  package: xpkg.upbound.io/upbound/provider-azure-dbforpostgresql:v1.2.0
+  package: docker.io/niiku/provider-azure-amd64:build-e2b175f8-5
   controllerConfigRef:
     name: debug-config
