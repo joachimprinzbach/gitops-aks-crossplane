@@ -1,6 +1,6 @@
 apiVersion: databases.platform.baloise.app/v1alpha1
 kind: PostgreSQLServerClaim
 metadata:
-  name: myapp
+  name: demo-deployment
 spec:
   location: Germany West Central

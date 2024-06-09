@@ -38,23 +38,15 @@ spec:
           deletionPolicy: Delete
           forProvider:
             location: "West Europe"
-            administratorLogin: psqladmin
-            autoGeneratePassword: true
-            administratorPasswordSecretRef:
-              key: password
-              name: secret
-              namespace: crossplane-system
             authentication:
               activeDirectoryAuthEnabled: true
-              passwordAuthEnabled: true
+              passwordAuthEnabled: false
               tenantId: 922474ff-3ade-465e-9be4-04730b10a029
             resourceGroupNameSelector:
               matchControllerRef: true
             skuName: GP_Standard_D2s_v3
             storageMb: 32768
-            #    storageTier: P30
             version: "16"
-            zone: "3"
       patches:
         - type: PatchSet
           patchSetName: Metadata
@@ -76,6 +68,19 @@ spec:
       patches:
         - type: PatchSet
           patchSetName: Metadata
+    - name: PostgreSQLFirewallRule
+      base:
+        apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
+        kind: FlexibleServerFirewallRule
+        spec:
+          forProvider:
+            serverIdSelector:
+              matchControllerRef: true
+            startIpAddress: 0.0.0.0
+            endIpAddress: 255.255.255.255
+        patches:
+          - type: PatchSet
+            patchSetName: Metadata
 ---
 #combine:
 #  variables:
