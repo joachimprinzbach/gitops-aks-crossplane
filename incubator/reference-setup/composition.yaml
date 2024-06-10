@@ -50,10 +50,6 @@ spec:
       patches:
         - type: PatchSet
           patchSetName: Metadata
-        - fromFieldPath: metadata.labels["crossplane.io/claim-namespace"]
-          toFieldPath: spec.administratorPasswordSecretRef.namespace
-        - fromFieldPath: metadata.labels["crossplane.io/claim-name"]
-          toFieldPath: spec.forProvider.administratorPasswordSecretRef.name
     - name: FlexibleServerDatabase
       base:
         apiVersion: dbforpostgresql.azure.upbound.io/v1beta1
